@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Create Account</title> 
+        <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="bg-dark">
+        <div class="col-10 offset-1 card mt-5 text-black">
+            <div class="card-body">
+                <form>
+                    <label for="txtFirstName" class="form-label">First Name</label>
+                    <input id="txtFirstName" placeholder="First Name" aria-label="First Name" class="form-control"> 
+                    <br>
+    
+                    <label for="txtLastName" class="form-label">Last Name</label>
+                    <input id="txtLastName" type="text" placeholder="Last Name" class="form-control" aria-label="First Name">
+                    <br>
+
+                    <label for="txtAddress1" class="form-label">Address</label>
+                    <input id="txtAddress1" type="text" placeholder="Address 1" class="form-control" aria-label="Address 1">
+                    <label for="txtAddress2" class="form-label"></label>
+                    <input id="txtAddress2" type="text" placeholder="Address 2" class="form-control" aria-label="Adress 2">
+                    <br>
+
+                    <label for="txtCity" class="form-label">City</label>
+                    <input id="txtCity" type="text" placeholder="City" class="form-control" aria-label="City">
+                    <br>
+                    
+                    <label for="txtState" class="form-label">State</label>
+                    <br>
+                    <select id="txtState"> 
+                        <option value="">Choose your State</option>
+                        <option value="Alabama">Alabama</option>
+                        <option value="Alaska">Alaska</option>
+                        <option value="Arizona">Arizona</option>
+                        <option value="Arkansas">Arkansas</option>
+                        <option value="California">California</option>
+                        <option value="Colorado">Colorado</option>
+                        <option value="Connecticut">Connecticut</option>
+                        <option value="Delaware">Delaware</option>
+                        <option value="District of Columbia">District Of Columbia</option>
+                        <option value="Florida">Florida</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Hawaii">Hawaii</option>
+                        <option value="Idaho">Idaho</option>
+                        <option value="Illinois">Illinois</option>
+                        <option value="Indiana">Indiana</option>
+                        <option value="Iowa">Iowa</option>
+                        <option value="Kansas">Kansas</option>
+                        <option value="Kentucky">Kentucky</option>
+                        <option value="Louisiana">Louisiana</option>
+                        <option value="Maine">Maine</option>
+                        <option value="Maryland">Maryland</option>
+                        <option value="Massachusetts">Massachusetts</option>
+                        <option value="Michigan">Michigan</option>
+                        <option value="Minnesota">Minnesota</option>
+                        <option value="Mississippi">Mississippi</option>
+                        <option value="Missouri">Missouri</option>
+                        <option value="Montana">Montana</option>
+                        <option value="Nebraska">Nebraska</option>
+                        <option value="Nevada">Nevada</option>
+                        <option value="New Hampshire">New Hampshire</option>
+                        <option value="New Jersey">New Jersey</option>
+                        <option value="New Mexico">New Mexico</option>
+                        <option value="New York">New York</option>
+                        <option value="North Carolina">North Carolina</option>
+                        <option value="North Dakota">North Dakota</option>
+                        <option value="Ohio">Ohio</option>
+                        <option value="Oklahoma">Oklahoma</option>
+                        <option value="Oregon">Oregon</option>
+                        <option value="Pennsylvania">Pennsylvania</option>
+                        <option value="Rhode Island">Rhode Island</option>
+                        <option value="South Carolina">South Carolina</option>
+                        <option value="South Dakota">South Dakota</option>
+                        <option value="Tennessee">Tennessee</option>
+                        <option value="Texas">Texas</option>
+                        <option value="Utah">Utah</option>
+                        <option value="Vermont">Vermont</option>
+                        <option value="Virginia">Virginia</option>
+                        <option value="Washington">Washington</option>
+                        <option value="West Virginia">West Virginia</option>
+                        <option value="Wisconsin">Wisconsin</option>
+                        <option value="Wyoming">Wyoming</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="txtZipcode" class="form-label">City</label>
+                    <input id="txtZipcode" type="number" placeholder="Zipcode" class="form-control" aria-label="Zipcode">
+                    <br>
+                    <label for="txtPhone" class="form-label">Phone Number</label>
+                    <input id="txtPhone" type="tel" placeholder="XXX XXX XXXX" maxlength="10" class="form-control" aria-label="Phone Number">
+                    <br>
+                    <label for="txtEmail" class="form-label">Email / Username</label>
+                    <input id="txtEmail" type="email" placeholder="Email Address" class="form-control" aria-label="Email Address">
+                    <br> 
+
+                    <label for="txtPassword" class="form-label">Password</label>
+                    <input id="txtPassword" type="password" placeholder="Password" class="form-control" aria-label="Password">
+    
+                    <button id="btnSubmit" type="button" class="btn btn-primary col-10 mt-2 offset-1">Submit</button>
+                </form>
+            </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+             var strFirstName;
+             var strLastName;
+             var strEmail;
+             var strPassword;
+
+            $('#btnSubmit').on('click', function(){
+                let strFirstName = $('#txtFirstName').val();
+                let strLastName = $('#txtLastName').val();
+                let strEmail = $('#txtEmail').val();
+                let strPassword = $('#txtPassword').val();
+                let strAddress1 = $('#txtAddress1').val();
+                let strAddress2 = $('#txtAddress2').val(); 
+                let strCity = $('#txtCity').val(); 
+                let strState = $('#txtState').val(); 
+                let strZipcode = $('#txtZipcode').val();
+                let strPhone = $('#txtPhone').val();
+
+                
+                let blnError = false;
+                let strErrorMessage = '';
+                if(strFirstName.length < 1 ){
+                    blnError = true;
+                    strErrorMessage = strErrorMessage + 'FirstName cannot be blank. '
+                }
+
+                if(strLastName.length < 1 ){
+                    blnError = true;
+                    strErrorMessage = strErrorMessage + 'LastName cannot be blank. ' 
+                }
+
+                if(strEmail.length < 1 ){
+                    blnError = true;
+                    strErrorMessage = strErrorMessage + 'Email cannot be blank. '
+                }
+
+                if(strPassword.length < 1 ){
+                    blnError = true;
+                    strErrorMessage = strErrorMessage + 'Password cannot be blank. '
+                }
+
+                if(strAddress1.length < 1 ){
+                    blnError = true;
+                    strErrorMessage = strErrorMessage + 'Address1 cannot be blank. '
+                }
+
+                if(strCity.length < 1 ){
+                    blnError = true;
+                    strErrorMessage = strErrorMessage + 'City cannot be blank. '
+                }
+
+                if(strState.length < 1 ){
+                    blnError = true;
+                    strErrorMessage = strErrorMessage + 'Please Choose a State. '
+                }
+
+                if(strPhone.length < 1 ){
+                    blnError = true;
+                    strErrorMessage = strErrorMessage + 'Phone Number Cannot be blank. '
+                }
+
+                if(strZipcode.length < 1 ){
+                    blnError = true;
+                    strErrorMessage = strErrorMessage + 'Zipcode Cannot be blank. '
+                }
+
+
+                if(blnError == true){
+                    console.log(strErrorMessage)
+                    Swal.fire({
+                        title: "Error",
+                        text: strErrorMessage,
+                        icon: "error"
+                });
+                }else {
+                    console.log("No Errors Found")
+                }
+                console.log('Hello' + strFirstName);
+            })
+
+            $('#btnClear').on('click',function(){
+
+                $('#txtFirstName').val('');
+                $('#txtLastName').val('');
+                $('#txtEmail').val('');
+                $('#txtPassword').val('');
+            })
+        </script>
+    </body>
+
+
+</html>
